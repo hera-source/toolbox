@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anna Vaupel · Dev Toolbox</title>
+  <meta name="description" content="Interaktive Developer-Toolbox von Anna Vaupel – kleine Web‑Tools zum Ausprobieren (Umrechnen, Notizen, Spiel)">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f12;
+      --card:#14161b;
+      --text:#ffffff;
+      --brand:#C90CDE;
+      --brand-2:#4CCAD3;
+      --brand-3:#7C65C5;
+      --brand-4:#C67EE4;
+      --muted:#b3b9c6;
+      --ring: 0 0 0 3px rgba(201,12,222,0.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(124,101,197,.25), transparent 60%),
+                  radial-gradient(900px 600px at 120% 10%, rgba(76,202,211,.20), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:700}
+    .dot{width:12px;height:12px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
+    nav a{opacity:.9;text-decoration:none;margin-left:14px;padding:8px 12px;border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,.06)}
+
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:12px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}}
+    .title{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0 0 10px}
+    .subtitle{color:var(--muted);margin:0 0 24px;font-size:clamp(16px,2.2vw,18px)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{border:1px solid rgba(255,255,255,.14);background:linear-gradient(135deg, rgba(201,12,222,.18), rgba(76,202,211,.18));
+         padding:12px 16px;border-radius:12px;color:white;text-decoration:none;font-weight:600;backdrop-filter:blur(6px)}
+    .btn:hover{box-shadow:var(--ring)}
+    .btn.secondary{background:transparent}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+          border:1px solid rgba(255,255,255,.10); border-radius: var(--radius); box-shadow:var(--shadow)}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+    .tool{padding:18px}
+    .tool h3{margin:8px 0 8px;font-size:18px}
+    .tool p{margin:0 0 12px;color:var(--muted)}
+
+    label{font-size:14px;color:var(--muted)}
+    input, select, textarea{width:100%;padding:10px 12px;margin-top:6px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#0f1116;color:var(--text)}
+    input:focus, select:focus, textarea:focus{outline:none; box-shadow: var(--ring)}
+
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+    @media (max-width:700px){.row,.row-3{grid-template-columns:1fr}}
+
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(76,202,211,.16);border:1px solid rgba(76,202,211,.35);font-size:12px;color:#dff8fb}
+
+    footer{margin:36px 0 10px;color:var(--muted);font-size:14px;text-align:center}
+    .divider{height:1px;background:linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);margin:28px 0}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .small{font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo"><span class="dot"></span> <span>Anna Vaupel</span></div>
+      <nav>
+        <a href="#tools">Tools</a>
+        <a href="#about">Über</a>
+        <a href="https://github.com/USERNAME" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1 class="title">Dev‑Toolbox<br><span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Kleine Web‑Tools zum Ausprobieren</span></h1>
+        <p class="subtitle">Interaktive Mini‑Apps: Umrechner, Notizen (localStorage), kleines Spiel. Ideal für GitHub Pages.</p>
+        <div class="cta">
+          <a class="btn" href="#tools">Jetzt testen</a>
+          <a class="btn secondary" href="https://github.com/USERNAME/REPO" target="_blank" rel="noopener">Code ansehen</a>
+        </div>
+      </div>
+      <div class="card" style="padding:18px">
+        <img src="https://dummyimage.com/900x540/14161b/ffffff&text=Dev+Toolbox+Preview" alt="Toolbox Preview" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.10)">
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="tools">
+      <h2 style="margin:0 0 14px">Tools</h2>
+      <p class="subtitle" style="margin-top:-6px">Alles läuft lokal im Browser – keine Daten werden übertragen.</p>
+      <div class="grid">
+        <!-- Tool 1: Umrechner -->
+        <div class="card tool" id="converter">
+          <span class="badge">Tool</span>
+          <h3>Umrechner</h3>
+          <p>Temperatur, Länge, Gewicht – mit Swap.</p>
+          <div class="row">
+            <div>
+              <label for="conv-type">Kategorie</label>
+              <select id="conv-type">
+                <option value="temp">Temperatur (°C ↔ °F)</option>
+                <option value="len">Länge (cm ↔ inch)</option>
+                <option value="mass">Gewicht (kg ↔ lb)</option>
+              </select>
+            </div>
+            <div class="actions" style="align-items:end;justify-content:flex-end">
+              <button class="btn secondary" id="swap">Swap</button>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label id="label-a" for="val-a">Eingabe (°C)</label>
+              <input id="val-a" type="number" placeholder="0" />
+            </div>
+            <div>
+              <label id="label-b" for="val-b">Ergebnis (°F)</label>
+              <input id="val-b" type="number" placeholder="0" />
+            </div>
+          </div>
+          <p class="small" id="formula">Formel: (°C × 9/5) + 32</p>
+        </div>
+
+        <!-- Tool 2: Notizen -->
+        <div class="card tool" id="notes">
+          <span class="badge">Tool</span>
+          <h3>Notizen (lokal)</h3>
+          <p>Speichert automatisch im Browser (localStorage).</p>
+          <label for="notes-text">Text</label>
+          <textarea id="notes-text" rows="8" placeholder="Deine Notizen…"></textarea>
+          <div class="actions">
+            <button class="btn" id="export-notes">Als .txt exportieren</button>
+            <button class="btn secondary" id="clear-notes">Leeren</button>
+          </div>
+          <p class="small" id="notes-status">Status: gespeichert.</p>
+        </div>
+
+        <!-- Tool 3: Ratespiel -->
+        <div class="card tool" id="guess">
+          <span class="badge">Mini‑Game</span>
+          <h3>Zahlen‑Ratespiel</h3>
+          <p>Errate die Zahl (1–100). Feedback nach jedem Versuch.</p>
+          <div class="row">
+            <div>
+              <label for="guess-input">Dein Tipp</label>
+              <input id="guess-input" type="number" min="1" max="100" placeholder="42" />
+            </div>
+            <div class="actions" style="align-items:end">
+              <button class="btn" id="guess-btn">Prüfen</button>
+              <button class="btn secondary" id="reset-guess">Neu starten</button>
+            </div>
+          </div>
+          <p class="small" id="guess-status">Viel Glück!</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="about" class="card" style="padding:18px">
+      <h2>Über diese Seite</h2>
+      <p>Diese Toolbox ist Teil meines 12‑Monats‑Plans: kleine, funktionierende Web‑Tools bauen, dokumentieren und iterieren. Der Code ist bewusst simpel gehalten (HTML/CSS/JS, keine Frameworks), damit Einsteiger:innen mitlesen können.</p>
+      <div class="stack">
+        <span class="badge">HTML</span>
+        <span class="badge">CSS</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge">localStorage</span>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Anna Vaupel · Dev‑Toolbox
+    </footer>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ===== Umrechner =====
+    (function(){
+      const type = document.getElementById('conv-type');
+      const swapBtn = document.getElementById('swap');
+      const a = document.getElementById('val-a');
+      const b = document.getElementById('val-b');
+      const la = document.getElementById('label-a');
+      const lb = document.getElementById('label-b');
+      const formula = document.getElementById('formula');
+      let swapped = false;
+
+      function labels(){
+        const t = type.value;
+        const s = swapped;
+        if(t==='temp'){
+          la.textContent = s ? 'Eingabe (°F)' : 'Eingabe (°C)';
+          lb.textContent = s ? 'Ergebnis (°C)' : 'Ergebnis (°F)';
+          formula.textContent = s ? 'Formel: (°F − 32) × 5/9' : 'Formel: (°C × 9/5) + 32';
+        } else if(t==='len'){
+          la.textContent = s ? 'Eingabe (inch)' : 'Eingabe (cm)';
+          lb.textContent = s ? 'Ergebnis (cm)' : 'Ergebnis (inch)';
+          formula.textContent = s ? 'Formel: inch × 2.54 = cm' : 'Formel: cm ÷ 2.54 = inch';
+        } else if(t==='mass'){
+          la.textContent = s ? 'Eingabe (lb)' : 'Eingabe (kg)';
+          lb.textContent = s ? 'Ergebnis (kg)' : 'Ergebnis (lb)';
+          formula.textContent = s ? 'Formel: lb ÷ 2.20462 = kg' : 'Formel: kg × 2.20462 = lb';
+        }
+      }
+
+      function convert(){
+        const val = parseFloat(a.value);
+        if(Number.isNaN(val)){ b.value = ''; return; }
+        const t = type.value;
+        let out = 0;
+        if(t==='temp'){
+          out = swapped ? (val - 32) * 5/9 : (val * 9/5) + 32;
+        } else if(t==='len'){
+          out = swapped ? val * 2.54 : val / 2.54;
+        } else if(t==='mass'){
+          out = swapped ? val / 2.20462 : val * 2.20462;
+        }
+        b.value = (Math.round(out * 1000) / 1000).toString();
+      }
+
+      type.addEventListener('change', ()=>{ a.value=''; b.value=''; swapped=false; labels(); });
+      swapBtn.addEventListener('click', ()=>{ swapped = !swapped; const tmp=a.value; a.value=b.value; b.value=tmp; labels(); convert(); });
+      a.addEventListener('input', convert);
+      labels();
+    })();
+
+    // ===== Notizen =====
+    (function(){
+      const area = document.getElementById('notes-text');
+      const status = document.getElementById('notes-status');
+      const exportBtn = document.getElementById('export-notes');
+      const clearBtn = document.getElementById('clear-notes');
+      const KEY = 'anna-toolbox-notes-v1';
+
+      function save(){
+        localStorage.setItem(KEY, area.value);
+        status.textContent = 'Status: gespeichert.';
+      }
+      function load(){
+        area.value = localStorage.getItem(KEY) || '';
+        status.textContent = 'Status: geladen.';
+      }
+      area.addEventListener('input', ()=>{ status.textContent = 'Status: …speichern'; window.requestAnimationFrame(save); });
+      exportBtn.addEventListener('click', ()=>{
+        const blob = new Blob([area.value], {type:'text/plain'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'notizen.txt'; a.click();
+        URL.revokeObjectURL(url);
+      });
+      clearBtn.addEventListener('click', ()=>{ if(confirm('Notizen wirklich löschen?')){ area.value=''; save(); }});
+      load();
+    })();
+
+    // ===== Ratespiel =====
+    (function(){
+      const input = document.getElementById('guess-input');
+      const btn = document.getElementById('guess-btn');
+      const reset = document.getElementById('reset-guess');
+      const status = document.getElementById('guess-status');
+      let secret = Math.floor(Math.random()*100)+1;
+      let tries = 0;
+      function check(){
+        const n = parseInt(input.value,10);
+        if(Number.isNaN(n) || n<1 || n>100){ status.textContent = 'Bitte Zahl zwischen 1 und 100 eingeben.'; return; }
+        tries++;
+        if(n===secret){ status.textContent = `🎉 Treffer! Die Zahl war ${secret}. Versuche: ${tries}`; }
+        else if(n<secret){ status.textContent = 'Zu niedrig. Weiter!'; }
+        else { status.textContent = 'Zu hoch. Weiter!'; }
+      }
+      function restart(){ secret = Math.floor(Math.random()*100)+1; tries=0; input.value=''; status.textContent='Viel Glück!'; }
+      btn.addEventListener('click', check);
+      reset.addEventListener('click', restart);
+    })();
+  </script>
+</body>
+</html>
